@@ -1,13 +1,18 @@
 
-import './App.css';
+import './assets/styles/App.css';
+import HomePage from '../src/pages/HomePage.jsx';
+import ServicePage from './pages/ServicePage.jsx';
+import RouterWrapper from './router/Router.jsx';
 
 function App() {
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-red-600">
-        Hello world! 
-      </h1>
-    </div>
+    <>
+     {/* <HomePage /> */}
+     {/* <ServicePage /> */}
+      <RouterWrapper />
+     
+    </>
   );
 }
 
