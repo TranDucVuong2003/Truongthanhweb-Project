@@ -6,12 +6,14 @@ import Error404 from '../pages/Error404.jsx'
 import PriceList from '../pages/PriceList.jsx'
 import WebsiteTemplate from '../pages/WebsiteTemplate.jsx'
 import DetailTemplateWebsite from '../pages/DetaiTemplateWebsite.jsx'
+import ScrollToTop from '../components/ScrollToTop.jsx'
+import MainLayout from '../layout/MainLayout.jsx'
 function RouterWrapper() {
-
+    
     const router = createBrowserRouter([
         {
             path: "/",
-            element: (<Outlet />),
+            element: (<MainLayout />),
             children: [
                 {
                     path: "",
@@ -27,7 +29,7 @@ function RouterWrapper() {
                 },
                 {
                     path: "mau-website",
-                    element: <Outlet />,
+                    element: <MainLayout />,
                     children: [
                         {
                             path: "",
@@ -48,8 +50,11 @@ function RouterWrapper() {
     ]);
 
   return (
-    <RouterProvider router={router} />
-  )
+<>
+        
+        <RouterProvider router={router} />
+    
+</>  )
 }
 
 export default RouterWrapper

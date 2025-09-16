@@ -14,6 +14,7 @@ import ServicesSection from '../components/ServicesSection.jsx';
 import TestimonialsSection from '../components/TestimonialsSection.jsx';
 import WebsiteCategoriesSection from '../components/WebsiteCategoriesSection.jsx';
 import WhyChoseUsSection from '../components/WhyChoseUsSection.jsx';
+import ScrollToTop from '../components/ScrollToTop.jsx';
 
 
 function HomePage() {
@@ -34,6 +35,7 @@ function HomePage() {
      <CTASection />
      <ContactSection />
      <Footer />
+     {/* <ScrollToTop /> */}
     </>
   )
 }
