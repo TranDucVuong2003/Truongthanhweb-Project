@@ -5,6 +5,7 @@ import ServicePage from '../pages/ServicePage'
 import Error404 from '../pages/Error404.jsx'
 import PriceList from '../pages/PriceList.jsx'
 import WebsiteTemplate from '../pages/WebsiteTemplate.jsx'
+import DetailTemplateWebsite from '../pages/DetaiTemplateWebsite.jsx'
 function RouterWrapper() {
 
     const router = createBrowserRouter([
@@ -26,7 +27,16 @@ function RouterWrapper() {
                 },
                 {
                     path: "mau-website",
-                    element: <WebsiteTemplate />
+                    element: <Outlet />,
+                    children: [
+                        {
+                            path: "",
+                            element: <WebsiteTemplate />
+                        },
+                        {
+                        path: ":id",
+                        element: <DetailTemplateWebsite />
+                    }]
                 }
             
             ]

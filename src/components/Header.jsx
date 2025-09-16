@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/images/logo.webp";
+import { Link } from "react-router-dom";
 
 function Header({ ServiceHeader }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,38 +51,38 @@ function Header({ ServiceHeader }) {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="/"
+            <Link
+              to={"/"}
               className={`font-medium transition-colors ${
                 scrolled ? "text-gray-800 hover:text-[#00b2ff]" : "text-white hover:text-[#00b2ff]"
               }`}
             >
               Trang chủ
-            </a>
-            <a
-              href="/dich-vu"
+            </Link>
+            <Link
+              to = {"/dich-vu"}
               className={`font-medium transition-colors ${
                 scrolled ? "text-gray-800 hover:text-[#00b2ff]" : "text-white hover:text-[#00b2ff]"
               }`}
             >
               Dịch Vụ
-            </a>
-            <a
-              href="/bang-gia"
+            </Link>
+            <Link
+              to={"/bang-gia"}
               className={`font-medium transition-colors ${
                 scrolled ? "text-gray-800 hover:text-[#00b2ff]" : "text-white hover:text-[#00b2ff]"
               }`}
             >
               Bảng Giá
-            </a>
-            <a
-              href="/mau-website"
+            </Link>
+            <Link
+              to={"/mau-website"}
               className={`font-medium transition-colors ${
                 scrolled ? "text-gray-800 hover:text-[#00b2ff]" : "text-white hover:text-[#00b2ff]"
               }`}
             >
               Mẫu website
-            </a>
+            </Link>
           </nav>
 
           {/* CTA Button */}

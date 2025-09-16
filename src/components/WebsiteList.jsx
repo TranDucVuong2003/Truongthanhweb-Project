@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import anhXeDap from "../assets/images/shop-ban-xe-dap.png";
 import anhNoiThat from "../assets/images/shop-ban-do-noi-that.png";
 import anhTienIchCongNghe from "../assets/images/shop-tien-ich-cong-nghe.png";
@@ -11,6 +11,7 @@ import anhQuanAo from "../assets/images/shop-ban-quan-ao-1.png";
 import anhTra from "../assets/images/shop-ban-tra.png";
 import anhTraiCay from "../assets/images/shop-ban-rau-qua.png";
 import anhSpaDuongSinh from "../assets/images/web-spa-duong-sinh.png";
+import TemplateDetailModal from "./TemplateDetailModal";
 
 const categories = [
   { id: "", name: "Tất cả danh mục", checked: true },
@@ -57,78 +58,108 @@ const products = [
     name: "Shop Bán Xe Đạp",
     price: "6.100.000 đ",
     img: anhXeDap,
+    link: "https://startersites.io/blocksy/e-bike/",
+    segment: "Tiêu chuẩn",
   },
   {
     id: 359,
     name: "Shop Bán Đồ Nội Thất",
     price: "6.188.000 đ",
     img: anhNoiThat,
+    link: "https://startersites.io/blocksy/furniture/",
+    segment: "Cao cấp",
   },
   {
     id: 362,
     name: "Shop Tiện Ích Công Nghệ",
     price: "4.188.000 đ",
     img: anhTienIchCongNghe,
+    link: "https://startersites.io/blocksy/gadgets/",
+    segment: "Tiêu chuẩn",
   },
   {
     id: 364,
     name: "Shop Bán Đồ Gốm",
     price: "9.188.000 đ",
     img: anhDoGom,
+    link: ""
   },
   {
     id: 365,
     name: "Shop Bán Mỹ Phẩm",
     price: "4.188.000 đ",
     img: anhMyPham,
+    link: ""
   },
   {
     id: 366,
     name: "Web Tin Tức 1",
     price: "4.188.000 đ",
     img: anhWebTinTuc1,
+    link: ""
   },
   {
     id: 367,
     name: "Shop Bán Thức Ăn Thú Cưng",
     price: "4.188.000 đ",
     img: anhBanThucAnThuCung,
+    link: ""
   },
   {
     id: 368,
     name: "Web Bất Động Sản",
     price: "9.188.000 đ",
     img: anhBatDongSan,
+    link: ""
   },
   {
     id: 369,
     name: "Shop Bán Quần Áo",
     price: "4.188.000 đ",
     img: anhQuanAo,
+    link: ""
   },
   {
     id: 370,
     name: "Shop Bán Trà",
     price: "4.188.000 đ",
     img: anhTra,
+    link: ""
   },
   {
     id: 371,
     name: "Shop Bán Trái Cây",
     price: "4.188.000 đ",
     img: anhTraiCay,
+    link: ""
   },
   {
     id: 372,
     name: "Web Spa Dưỡng Sinh",
     price: "4.188.000 đ",
     img: anhSpaDuongSinh,
+    link: ""
   },
 ];
 
 export default function WebsiteList() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+
   const handleOpenModal = (id) => {
-    console.log("Open modal product:", id);
+    const template = products.find((p) => p.id === id);
+    setSelectedTemplate({
+      ...template,
+      image: template.img,
+      // link: ,
+      // Có thể bổ sung thêm description, features, tags nếu có
+    });
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedTemplate(null);
   };
 
   return (
@@ -265,7 +296,7 @@ export default function WebsiteList() {
                         {product.price}
                       </span>
                       <button
-                        className="px-3 py-1.5 bg-primary text-white !rounded-button hover:bg-primary/90 transition whitespace-nowrap"
+                        className="px-3 py-1.5 bg-[#4f46e5] rounded-xl text-white !rounded-button hover:bg-primary/90 transition whitespace-nowrap"
                         onClick={() => handleOpenModal(product.id)}
                       >
                         Xem chi tiết
@@ -331,6 +362,13 @@ export default function WebsiteList() {
             </div>
           </div>
           {/* End Products */}
+
+          {/* Modal chi tiết template */}
+          <TemplateDetailModal
+            isOpen={modalOpen}
+            onClose={handleCloseModal}
+            template={selectedTemplate}
+          />
         </div>
       </div>
     </div>
