@@ -1,8 +1,10 @@
 import React from 'react'
-import { createBrowserRouter, Outlet, Router, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
 import ServicePage from '../pages/ServicePage'
 import Error404 from '../pages/Error404.jsx'
+import PriceList from '../pages/PriceList.jsx'
+import WebsiteTemplate from '../pages/WebsiteTemplate.jsx'
 function RouterWrapper() {
 
     const router = createBrowserRouter([
@@ -20,8 +22,13 @@ function RouterWrapper() {
                 },
                 {
                     path: "bang-gia",
-                    element:<></>
+                    element:<PriceList />
+                },
+                {
+                    path: "mau-website",
+                    element: <WebsiteTemplate />
                 }
+            
             ]
         },
         {

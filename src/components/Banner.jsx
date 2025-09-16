@@ -38,7 +38,7 @@ const Banner = () => {
       >
         <a
           href="#quote"
-          className="bg-[#4f46e5] hover:opacity-80 text-white font-medium py-3 px-8 rounded-2xl transition-colors whitespace-nowrap"
+          className="bg-[#4f46e5] text-white font-medium py-3 px-8 rounded-2xl whitespace-nowrap shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:bg-[#3763c4] focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/50"
         >
           Nhận Báo Giá Miễn Phí
         </a>

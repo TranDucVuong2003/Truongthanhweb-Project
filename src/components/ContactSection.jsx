@@ -1,6 +1,45 @@
-import React from 'react'
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 function ContactSection() {
+  const [formData, setFormData] = useState({ name: "", phone: "" });
+  const [loading, setLoading] = useState(false);
+
+  // Hàm xử lý nhập dữ liệu
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Hàm gửi form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .send(
+        "service_1zqksrj", // thay bằng service ID trong EmailJS
+        "template_p9z12de", // thay bằng template ID trong EmailJS
+        {
+          user_name: formData.name,
+          user_phone: formData.phone,
+          time: new Date().toLocaleString(),
+        },
+        "6OA2hhgJHP4zyeabZ" // thay bằng public key (user ID)
+      )
+      .then(
+        () => {
+          alert("Gửi thông tin thành công!");
+          setFormData({ name: "", phone: "" });
+          setLoading(false);
+        },
+        (error) => {
+          console.error("Lỗi gửi mail:", error.text);
+          alert("Gửi thất bại, vui lòng thử lại!");
+          setLoading(false);
+        }
+      );
+  };
+
   return (
     <section id="quote" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -25,7 +64,11 @@ function ContactSection() {
                 nhất cho vấn đề của bạn.
               </p>
             </div>
-            <form id="contact-form" className="space-y-6">
+            <form
+              id="contact-form"
+              className="space-y-6"
+              onSubmit={handleSubmit}
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -37,6 +80,8 @@ function ContactSection() {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   placeholder="Nhập tên của bạn"
                   required
@@ -53,6 +98,8 @@ function ContactSection() {
                   type="tel"
                   id="phone"
                   name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   placeholder="Nhập số điện thoại của bạn"
                   required
@@ -60,9 +107,10 @@ function ContactSection() {
               </div>
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full bg-[#00B2FF] rounded-lg hover:bg-[#2563EB] text-white font-bold py-4 px-6 !rounded-button transition-colors whitespace-nowrap text-lg"
               >
-                ĐĂNG KÝ
+                {loading ? "Đang gửi..." : "ĐĂNG KÝ"}
               </button>
             </form>
           </div>
@@ -72,4 +120,4 @@ function ContactSection() {
   );
 }
 
-export default ContactSection
+export default ContactSection;

@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 function Consultation() {
- return (
+  const [loading, setLoading] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_1zqksrj", // 🔹 Thay bằng Service ID trong EmailJS
+        "template_bz6whpe", // 🔹 Thay bằng Template ID trong EmailJS
+        e.target,
+        "6OA2hhgJHP4zyeabZ" // 🔹 Thay bằng Public Key trong EmailJS
+      )
+      .then(
+        () => {
+          alert("✅ Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ sớm.");
+          setLoading(false);
+          e.target.reset();
+        },
+        (error) => {
+          alert("❌ Gửi thất bại. Vui lòng thử lại!");
+          console.error(error.text);
+          setLoading(false);
+        }
+      );
+  };
+
+  return (
     <section className="py-16 bg-[#e8e8f8] from-primary/10 to-secondary/10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -15,7 +43,7 @@ function Consultation() {
               giờ để tư vấn giải pháp phù hợp nhất cho doanh nghiệp của bạn.
             </p>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={sendEmail}>
               {/* Họ tên + SĐT */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -28,8 +56,10 @@ function Consultation() {
                   <input
                     type="text"
                     id="fullname"
+                    name="fullname"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
                     placeholder="Nhập họ tên của bạn"
+                    required
                   />
                 </div>
                 <div>
@@ -42,8 +72,10 @@ function Consultation() {
                   <input
                     type="tel"
                     id="phone"
+                    name="phone"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
                     placeholder="Nhập số điện thoại"
+                    required
                   />
                 </div>
               </div>
@@ -59,8 +91,10 @@ function Consultation() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
                   placeholder="Nhập địa chỉ email"
+                  required
                 />
               </div>
 
@@ -75,7 +109,9 @@ function Consultation() {
                 <div className="relative">
                   <select
                     id="service"
+                    name="service"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary appearance-none pr-8"
+                    required
                   >
                     <option value="" disabled selected>
                       Chọn dịch vụ
@@ -103,6 +139,7 @@ function Consultation() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows="4"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
                   placeholder="Mô tả nhu cầu của bạn..."
@@ -112,9 +149,10 @@ function Consultation() {
               {/* Submit button */}
               <button
                 type="submit"
+                disabled={loading}
                 className="px-6 py-3 bg-[#4f46e5] rounded-xl text-white !rounded-button hover:bg-primary/90 transition whitespace-nowrap"
               >
-                Gửi yêu cầu
+                {loading ? "Đang gửi..." : "Gửi yêu cầu"}
               </button>
             </form>
           </div>
@@ -122,7 +160,7 @@ function Consultation() {
           {/* Right - Image */}
           <div className="hidden lg:block">
             <img
-              src="https://readdy.ai/api/search-image?query=professional%2520business%2520team%2520discussing%2520digital%2520strategy%2520in%2520modern%2520office%252C%2520diverse%2520group%2520of%2520people%2520looking%2520at%2520computer%2520screen%252C%2520collaborative%2520work%2520environment%252C%2520high%2520quality%2520render&width=600&height=600&seq=2&orientation=squarish"
+              src="https://readdy.ai/api/search-image?query=professional%2520business%2520team%2520discussing%2520digital%2520strategy%2520in%2520modern%2520office%2C%2520diverse%2520group%2520of%2520people%2520looking%2520at%2520computer%2520screen%2C%2520collaborative%2520work%2520environment%2C%2520high%2520quality%2520render&width=600&height=600&seq=2&orientation=squarish"
               alt="Đội ngũ tư vấn"
               className="w-full h-auto rounded-xl shadow-lg"
             />
@@ -133,4 +171,4 @@ function Consultation() {
   );
 }
 
-export default Consultation
+export default Consultation;
