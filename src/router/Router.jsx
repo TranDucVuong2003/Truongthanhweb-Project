@@ -8,6 +8,7 @@ import WebsiteTemplate from '../pages/WebsiteTemplate.jsx'
 import DetailTemplateWebsite from '../pages/DetaiTemplateWebsite.jsx'
 import ScrollToTop from '../components/ScrollToTop.jsx'
 import MainLayout from '../layout/MainLayout.jsx'
+import ContactPage from '../pages/ContactPage.jsx'
 function RouterWrapper() {
     
     const router = createBrowserRouter([
@@ -39,6 +40,11 @@ function RouterWrapper() {
                         path: ":id",
                         element: <DetailTemplateWebsite />
                     }]
+                }, 
+                {
+                    path: "lien-he",
+                    element: <ContactPage />,
+                
                 }
             
             ]

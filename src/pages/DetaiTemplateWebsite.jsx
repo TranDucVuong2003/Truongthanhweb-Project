@@ -21,18 +21,102 @@ export default function DetailTemplateWebsite() {
   const [currentDevice, setCurrentDevice] = useState("desktop"); // state cho device
 
   const products = [
-    { id: 358, name: "Shop Bán Xe Đạp", price: "6.100.000 đ", img: anhXeDap, link: "https://startersites.io/blocksy/e-bike/", segment: "Tiêu chuẩn" },
-    { id: 359, name: "Shop Bán Đồ Nội Thất", price: "6.188.000 đ", img: anhNoiThat, link: "https://startersites.io/blocksy/furniture/", segment: "Cao cấp" },
-    { id: 362, name: "Shop Tiện Ích Công Nghệ", price: "4.188.000 đ", img: anhTienIchCongNghe, link: "https://startersites.io/blocksy/gadgets/", segment: "Tiêu chuẩn" },
-    { id: 364, name: "Shop Bán Đồ Gốm", price: "9.188.000 đ", img: anhDoGom, link: "", segment: "Cao cấp" },
-    { id: 365, name: "Shop Bán Mỹ Phẩm", price: "4.188.000 đ", img: anhMyPham, link: "", segment: "Tiêu chuẩn" },
-    { id: 366, name: "Web Tin Tức 1", price: "4.188.000 đ", img: anhWebTinTuc1, link: "", segment: "Tiêu chuẩn" },
-    { id: 367, name: "Shop Bán Thức Ăn Thú Cưng", price: "4.188.000 đ", img: anhBanThucAnThuCung, link: "", segment: "Tiêu chuẩn" },
-    { id: 368, name: "Web Bất Động Sản", price: "9.188.000 đ", img: anhBatDongSan, link: "", segment: "Cao cấp" },
-    { id: 369, name: "Shop Bán Quần Áo", price: "4.188.000 đ", img: anhQuanAo, link: "", segment: "Tiêu chuẩn" },
-    { id: 370, name: "Shop Bán Trà", price: "4.188.000 đ", img: anhTra, link: "", segment: "Tiêu chuẩn" },
-    { id: 371, name: "Shop Bán Trái Cây", price: "4.188.000 đ", img: anhTraiCay, link: "", segment: "Tiêu chuẩn" },
-    { id: 372, name: "Web Spa Dưỡng Sinh", price: "4.188.000 đ", img: anhSpaDuongSinh, link: "", segment: "Tiêu chuẩn" },
+    {
+      id: 358,
+      name: "Shop Bán Xe Đạp",
+      price: "6.100.000 đ",
+      img: anhXeDap,
+      link: "https://startersites.io/blocksy/e-bike/",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 359,
+      name: "Shop Bán Đồ Nội Thất",
+      price: "6.188.000 đ",
+      img: anhNoiThat,
+      link: "https://startersites.io/blocksy/furniture/",
+      segment: "Cao cấp",
+    },
+    {
+      id: 362,
+      name: "Shop Tiện Ích Công Nghệ",
+      price: "4.188.000 đ",
+      img: anhTienIchCongNghe,
+      link: "https://startersites.io/blocksy/gadgets/",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 364,
+      name: "Shop Bán Đồ Gốm",
+      price: "9.188.000 đ",
+      img: anhDoGom,
+      link: "",
+      segment: "Cao cấp",
+    },
+    {
+      id: 365,
+      name: "Shop Bán Mỹ Phẩm",
+      price: "4.188.000 đ",
+      img: anhMyPham,
+      link: "",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 366,
+      name: "Web Tin Tức 1",
+      price: "4.188.000 đ",
+      img: anhWebTinTuc1,
+      link: "",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 367,
+      name: "Shop Bán Thức Ăn Thú Cưng",
+      price: "4.188.000 đ",
+      img: anhBanThucAnThuCung,
+      link: "",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 368,
+      name: "Web Bất Động Sản",
+      price: "9.188.000 đ",
+      img: anhBatDongSan,
+      link: "",
+      segment: "Cao cấp",
+    },
+    {
+      id: 369,
+      name: "Shop Bán Quần Áo",
+      price: "4.188.000 đ",
+      img: anhQuanAo,
+      link: "",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 370,
+      name: "Shop Bán Trà",
+      price: "4.188.000 đ",
+      img: anhTra,
+      link: "",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 371,
+      name: "Shop Bán Trái Cây",
+      price: "4.188.000 đ",
+      img: anhTraiCay,
+      link: "",
+      segment: "Tiêu chuẩn",
+    },
+    {
+      id: 372,
+      name: "Web Spa Dưỡng Sinh",
+      price: "4.188.000 đ",
+      img: anhSpaDuongSinh,
+      link: "",
+      segment: "Tiêu chuẩn",
+    },
   ];
 
   // tìm product theo id URL
@@ -113,7 +197,6 @@ export default function DetailTemplateWebsite() {
         {/* Right section */}
         <div className="flex items-center space-x-2">
           <div className="hidden md:flex items-center space-x-6">
-
             <button
               onClick={() => setIframeSize("phone")}
               className={`p-2 rounded-lg ${
